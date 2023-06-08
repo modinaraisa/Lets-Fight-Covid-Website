@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LetsFightCovidModelStoreContainer" CdmEntityContainer="LetsFightCovidEntities">
+    <EntitySetMapping Name="AdminMembers">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.AdminMember">
+        <MappingFragment StoreEntitySet="AdminMember">
+          <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+          <ScalarProperty Name="admin_userName" ColumnName="admin_userName" />
+          <ScalarProperty Name="admin_full_name" ColumnName="admin_full_name" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ambulances">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.Ambulance">
+        <MappingFragment StoreEntitySet="Ambulance">
+          <ScalarProperty Name="ambulance_ID" ColumnName="ambulance_ID" />
+          <ScalarProperty Name="ambulance_availability" ColumnName="ambulance_availability" />
+          <ScalarProperty Name="ambulance_contact" ColumnName="ambulance_contact" />
+          <ScalarProperty Name="ambulance_rent" ColumnName="ambulance_rent" />
+          <ScalarProperty Name="hospital_ID" ColumnName="hospital_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hospitals">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.Hospital">
+        <MappingFragment StoreEntitySet="Hospital">
+          <ScalarProperty Name="hospital_ID" ColumnName="hospital_ID" />
+          <ScalarProperty Name="hospital_Name" ColumnName="hospital_Name" />
+          <ScalarProperty Name="hospital_address" ColumnName="hospital_address" />
+          <ScalarProperty Name="hospital_contact" ColumnName="hospital_contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Icus">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.Icu">
+        <MappingFragment StoreEntitySet="Icu">
+          <ScalarProperty Name="icu_ID" ColumnName="icu_ID" />
+          <ScalarProperty Name="icu_availability" ColumnName="icu_availability" />
+          <ScalarProperty Name="cost_per_day" ColumnName="cost_per_day" />
+          <ScalarProperty Name="hospital_ID" ColumnName="hospital_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OxygenProviders">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.OxygenProvider">
+        <MappingFragment StoreEntitySet="OxygenProvider">
+          <ScalarProperty Name="provider_ID" ColumnName="provider_ID" />
+          <ScalarProperty Name="provider_address" ColumnName="provider_address" />
+          <ScalarProperty Name="provider_contact" ColumnName="provider_contact" />
+          <ScalarProperty Name="available_stock" ColumnName="available_stock" />
+          <ScalarProperty Name="price_per_cylinder" ColumnName="price_per_cylinder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plasmas">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.Plasma">
+        <MappingFragment StoreEntitySet="Plasma">
+          <ScalarProperty Name="plasma_ID" ColumnName="plasma_ID" />
+          <ScalarProperty Name="donor_name" ColumnName="donor_name" />
+          <ScalarProperty Name="donor_address" ColumnName="donor_address" />
+          <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+          <ScalarProperty Name="donor_contact" ColumnName="donor_contact" />
+          <ScalarProperty Name="plasma_availability" ColumnName="plasma_availability" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="users_ID" ColumnName="users_ID" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="full_address" ColumnName="full_address" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VaccinationCenters">
+      <EntityTypeMapping TypeName="LetsFightCovidModel.VaccinationCenter">
+        <MappingFragment StoreEntitySet="VaccinationCenter">
+          <ScalarProperty Name="center_ID" ColumnName="center_ID" />
+          <ScalarProperty Name="hospital_name" ColumnName="hospital_name" />
+          <ScalarProperty Name="center_location" ColumnName="center_location" />
+          <ScalarProperty Name="available_vaccine" ColumnName="available_vaccine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

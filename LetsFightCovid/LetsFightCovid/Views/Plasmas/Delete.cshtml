@@ -1,0 +1,64 @@
+﻿@model LetsFightCovid.Models.Plasma
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Plasma Information</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blood_group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blood_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plasma_availability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plasma_availability)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "IndexPlas")
+        </div>
+    }
+</div>

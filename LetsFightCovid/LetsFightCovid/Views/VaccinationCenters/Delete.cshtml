@@ -1,0 +1,48 @@
+﻿@model LetsFightCovid.Models.VaccinationCenter
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Vaccination Information</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hospital_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hospital_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.center_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.center_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.available_vaccine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.available_vaccine)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "IndexVac")
+        </div>
+    }
+</div>

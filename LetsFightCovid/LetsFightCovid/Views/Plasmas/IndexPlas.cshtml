@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LetsFightCovid.Models.Plasma>
+
+@{
+    ViewBag.Title = "IndexPlas";
+}
+
+<h2>Plasma Information</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.donor_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donor_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.blood_group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donor_contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.plasma_availability)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.donor_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donor_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.blood_group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donor_contact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.plasma_availability)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.plasma_ID }, new { @class = "btn btn-primary btnStyle" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.plasma_ID }, new { @class = "btn btn-success btnStyle" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.plasma_ID }, new { @class = "btn btn-danger btnStyle" })
+        </td>
+    </tr>
+}
+
+</table>

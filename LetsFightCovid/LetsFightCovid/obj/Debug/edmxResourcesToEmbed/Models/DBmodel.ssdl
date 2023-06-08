@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LetsFightCovidModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminMember">
+    <Key>
+      <PropertyRef Name="admin_ID" />
+    </Key>
+    <Property Name="admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="admin_userName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="admin_full_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="passwords" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ambulance">
+    <Key>
+      <PropertyRef Name="ambulance_ID" />
+    </Key>
+    <Property Name="ambulance_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ambulance_availability" Type="int" />
+    <Property Name="ambulance_contact" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ambulance_rent" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="hospital_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="hospital_ID" />
+    </Key>
+    <Property Name="hospital_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hospital_Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="hospital_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="hospital_contact" Type="varchar" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icu">
+    <Key>
+      <PropertyRef Name="icu_ID" />
+    </Key>
+    <Property Name="icu_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="icu_availability" Type="int" />
+    <Property Name="cost_per_day" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="hospital_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="OxygenProvider">
+    <Key>
+      <PropertyRef Name="provider_ID" />
+    </Key>
+    <Property Name="provider_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="provider_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="provider_contact" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="available_stock" Type="int" Nullable="false" />
+    <Property Name="price_per_cylinder" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plasma">
+    <Key>
+      <PropertyRef Name="plasma_ID" />
+    </Key>
+    <Property Name="plasma_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="donor_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="donor_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="blood_group" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="donor_contact" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="plasma_availability" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="users_ID" />
+    </Key>
+    <Property Name="users_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="contact" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="full_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="passwords" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VaccinationCenter">
+    <Key>
+      <PropertyRef Name="center_ID" />
+    </Key>
+    <Property Name="center_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hospital_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="center_location" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="available_vaccine" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Ambulance__hospi__3B75D760">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Ambulance" Type="Self.Ambulance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="hospital_ID" />
+      </Principal>
+      <Dependent Role="Ambulance">
+        <PropertyRef Name="hospital_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Icu__hospital_ID__38996AB5">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Icu" Type="Self.Icu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="hospital_ID" />
+      </Principal>
+      <Dependent Role="Icu">
+        <PropertyRef Name="hospital_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LetsFightCovidModelStoreContainer">
+    <EntitySet Name="AdminMember" EntityType="Self.AdminMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ambulance" EntityType="Self.Ambulance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icu" EntityType="Self.Icu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OxygenProvider" EntityType="Self.OxygenProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plasma" EntityType="Self.Plasma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VaccinationCenter" EntityType="Self.VaccinationCenter" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Ambulance__hospi__3B75D760" Association="Self.FK__Ambulance__hospi__3B75D760">
+      <End Role="Hospital" EntitySet="Hospital" />
+      <End Role="Ambulance" EntitySet="Ambulance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Icu__hospital_ID__38996AB5" Association="Self.FK__Icu__hospital_ID__38996AB5">
+      <End Role="Hospital" EntitySet="Hospital" />
+      <End Role="Icu" EntitySet="Icu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

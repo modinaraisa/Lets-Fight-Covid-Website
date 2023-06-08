@@ -1,0 +1,56 @@
+﻿@model LetsFightCovid.Models.OxygenProvider
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Oxygen Provider</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.provider_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provider_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.provider_contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provider_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.available_stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.available_stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price_per_cylinder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price_per_cylinder)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "IndexOx")
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@model LetsFightCovid.Models.OxygenProvider
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details Oxygen Provider</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.provider_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provider_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.provider_contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provider_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.available_stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.available_stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price_per_cylinder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price_per_cylinder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.provider_ID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "IndexOx")
+</p>

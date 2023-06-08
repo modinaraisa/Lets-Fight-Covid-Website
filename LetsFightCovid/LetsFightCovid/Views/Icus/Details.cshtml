@@ -1,0 +1,42 @@
+﻿@model LetsFightCovid.Models.Icu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details Icu</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.icu_availability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.icu_availability)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost_per_day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost_per_day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hospital_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hospital_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.icu_ID }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "IndexIcu")
+</p>

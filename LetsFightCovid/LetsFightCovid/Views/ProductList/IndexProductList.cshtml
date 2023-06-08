@@ -1,0 +1,45 @@
+﻿@using LetsFightCovid.Models @*For tblProduct Class*@
+@using PagedList.Mvc; @*//import this so we get our HTML Helper*@
+@using PagedList; @*//import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@{
+    ViewBag.Title = "Beverages";
+}
+
+<link href="~/Content/cart/PagedList.css" rel="stylesheet" />
+@*Heading*@
+<h2 class="wow pulse">Products</h2>
+
+@*Products*@
+<table class="table table-striped table-hover wow slideInLeft" style=" width:35%;">
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Buy</th>
+    </tr>
+    @*Retrieve products from the ViewBag*@
+    
+    
+        
+            @foreach (Product p in ViewBag.ListProducts)
+            {
+                <tr>
+
+                    <td>
+                        
+                        <img src="~/Content/Images/p" alt="">
+
+                    </td>
+                    <td>@p.pname</td>
+                    <td>Tk @Math.Round(p.price, 2)</td>
+                    <td>
+                        @Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = p.pid }, new { @class = "btn btn-success" })
+                    </td>
+                </tr>
+            }
+
+    
+        </table>
+
+<!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+@Html.PagedListPager((IPagedList)ViewBag.ListProducts, page => Url.Action("IndexProductList", new { page }))

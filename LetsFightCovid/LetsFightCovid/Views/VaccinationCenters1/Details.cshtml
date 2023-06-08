@@ -1,0 +1,42 @@
+﻿@model LetsFightCovid.Models.VaccinationCenter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hospital_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hospital_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.center_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.center_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.available_vaccine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.available_vaccine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Back to List", "IndexVac1")
+</p>

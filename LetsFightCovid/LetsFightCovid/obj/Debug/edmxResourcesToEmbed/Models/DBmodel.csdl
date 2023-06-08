@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LetsFightCovidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminMember">
+    <Key>
+      <PropertyRef Name="admin_ID" />
+    </Key>
+    <Property Name="admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="admin_userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ambulance">
+    <Key>
+      <PropertyRef Name="ambulance_ID" />
+    </Key>
+    <Property Name="ambulance_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ambulance_availability" Type="Int32" />
+    <Property Name="ambulance_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ambulance_rent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hospital_ID" Type="Int32" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK__Ambulance__hospi__3B75D760" FromRole="Ambulance" ToRole="Hospital" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="hospital_ID" />
+    </Key>
+    <Property Name="hospital_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hospital_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hospital_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hospital_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ambulances" Relationship="Self.FK__Ambulance__hospi__3B75D760" FromRole="Hospital" ToRole="Ambulance" />
+    <NavigationProperty Name="Icus" Relationship="Self.FK__Icu__hospital_ID__38996AB5" FromRole="Hospital" ToRole="Icu" />
+  </EntityType>
+  <EntityType Name="Icu">
+    <Key>
+      <PropertyRef Name="icu_ID" />
+    </Key>
+    <Property Name="icu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="icu_availability" Type="Int32" />
+    <Property Name="cost_per_day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hospital_ID" Type="Int32" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK__Icu__hospital_ID__38996AB5" FromRole="Icu" ToRole="Hospital" />
+  </EntityType>
+  <EntityType Name="OxygenProvider">
+    <Key>
+      <PropertyRef Name="provider_ID" />
+    </Key>
+    <Property Name="provider_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="provider_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="provider_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="available_stock" Type="Int32" Nullable="false" />
+    <Property Name="price_per_cylinder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plasma">
+    <Key>
+      <PropertyRef Name="plasma_ID" />
+    </Key>
+    <Property Name="plasma_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="donor_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="donor_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="blood_group" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="donor_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plasma_availability" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="users_ID" />
+    </Key>
+    <Property Name="users_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="Int32" Nullable="false" />
+    <Property Name="contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="full_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VaccinationCenter">
+    <Key>
+      <PropertyRef Name="center_ID" />
+    </Key>
+    <Property Name="center_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hospital_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="center_location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="available_vaccine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Ambulance__hospi__3B75D760">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Ambulance" Type="Self.Ambulance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="hospital_ID" />
+      </Principal>
+      <Dependent Role="Ambulance">
+        <PropertyRef Name="hospital_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Icu__hospital_ID__38996AB5">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Icu" Type="Self.Icu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="hospital_ID" />
+      </Principal>
+      <Dependent Role="Icu">
+        <PropertyRef Name="hospital_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LetsFightCovidEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminMembers" EntityType="Self.AdminMember" />
+    <EntitySet Name="Ambulances" EntityType="Self.Ambulance" />
+    <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+    <EntitySet Name="Icus" EntityType="Self.Icu" />
+    <EntitySet Name="OxygenProviders" EntityType="Self.OxygenProvider" />
+    <EntitySet Name="Plasmas" EntityType="Self.Plasma" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="VaccinationCenters" EntityType="Self.VaccinationCenter" />
+    <AssociationSet Name="FK__Ambulance__hospi__3B75D760" Association="Self.FK__Ambulance__hospi__3B75D760">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Ambulance" EntitySet="Ambulances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Icu__hospital_ID__38996AB5" Association="Self.FK__Icu__hospital_ID__38996AB5">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Icu" EntitySet="Icus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

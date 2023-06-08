@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LetsFightCovidModel1StoreContainer" CdmEntityContainer="LetsFightCovidEntities1">
+    <EntitySetMapping Name="Imgs">
+      <EntityTypeMapping TypeName="LetsFightCovidModel1.Img">
+        <MappingFragment StoreEntitySet="Img">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="iname" ColumnName="iname" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="LetsFightCovidModel1.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="did" ColumnName="did" />
+          <ScalarProperty Name="oid" ColumnName="oid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pprice" ColumnName="pprice" />
+          <ScalarProperty Name="pqty" ColumnName="pqty" />
+          <ScalarProperty Name="pamount" ColumnName="pamount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderProducts">
+      <EntityTypeMapping TypeName="LetsFightCovidModel1.OrderProduct">
+        <MappingFragment StoreEntitySet="OrderProduct">
+          <ScalarProperty Name="oid" ColumnName="oid" />
+          <ScalarProperty Name="odate" ColumnName="odate" />
+          <ScalarProperty Name="opname" ColumnName="opname" />
+          <ScalarProperty Name="opphone" ColumnName="opphone" />
+          <ScalarProperty Name="opaddress" ColumnName="opaddress" />
+          <ScalarProperty Name="oamount" ColumnName="oamount" />
+          <ScalarProperty Name="ostatus" ColumnName="ostatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="LetsFightCovidModel1.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

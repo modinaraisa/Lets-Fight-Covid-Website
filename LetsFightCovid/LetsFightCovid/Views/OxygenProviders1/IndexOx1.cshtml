@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LetsFightCovid.Models.OxygenProvider>
+
+@{
+    ViewBag.Title = "IndexOx1";
+}
+
+<h2>Oxygen Providers</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.provider_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.provider_contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.available_stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price_per_cylinder)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.provider_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.provider_contact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.available_stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price_per_cylinder)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.provider_ID }, new { @class = "btn btn-success btnStyle" }) 
+        </td>
+    </tr>
+}
+
+</table>

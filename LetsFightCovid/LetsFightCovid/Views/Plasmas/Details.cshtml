@@ -1,0 +1,58 @@
+﻿@model LetsFightCovid.Models.Plasma
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details Plasma Information</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blood_group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blood_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donor_contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donor_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plasma_availability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plasma_availability)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.plasma_ID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "IndexPlas")
+</p>

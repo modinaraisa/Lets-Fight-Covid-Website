@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LetsFightCovid.Models.Ambulance>
+
+@{
+    ViewBag.Title = "IndexAmb1";
+}
+
+<h2>Ambulance Information</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ambulance_availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ambulance_contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ambulance_rent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hospital_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ambulance_availability)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ambulance_contact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ambulance_rent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hospital_ID)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.ambulance_ID }, new { @class = "btn btn-success btnStyle" }) 
+           
+        </td>
+    </tr>
+}
+
+</table>

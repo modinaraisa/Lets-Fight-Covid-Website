@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("LetsFightCovid", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (Session["Username"] != null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        
+                        <li>@Html.ActionLink("Contact", "Create", "CustomerReviews")</li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Services <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Hospitals", "IndexHos1", "UserHospitals")</li>
+                                <li>@Html.ActionLink("ICU", "IndexIcu1", "UserIcus")</li>
+                                <li>@Html.ActionLink("VaccinationCenters", "IndexVac1", "VaccinationCenters1")</li>
+                                <li>@Html.ActionLink("Ambulance", "IndexAmb1", "UserAmbulances")</li>
+                                <li>@Html.ActionLink("PlasmaInfo", "IndexPlas1", "Plasmas1")</li>
+                                <li>@Html.ActionLink("OxygenInfo", "IndexOx1", "OxygenProviders1")</li>
+                                <li>@Html.ActionLink("Kits", "IndexProductLIst", "ProductList")</li>
+                            </ul>
+                        </li>
+
+                    }
+                    else if (Session["adminUsername"] != null)
+                    {
+
+                        <li> @Html.ActionLink("Home", "Index", "Home")</li>
+                        
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Services <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Hospitals", "IndexHos", "Hospitals")</li>
+                                <li>@Html.ActionLink("ICU", "IndexIcu", "Icus")</li>
+                                <li>@Html.ActionLink("VaccinationCenters", "IndexVac", "VaccinationCenters")</li>
+                                <li>@Html.ActionLink("Ambulance", "IndexAmb", "Ambulances")</li>
+                                <li>@Html.ActionLink("PlasmaInfo", "IndexPlas", "Plasmas")</li>
+                                <li>@Html.ActionLink("OxygenInfo", "IndexOx", "OxygenProviders")</li>
+                                <li>@Html.ActionLink("Product", "IndexProduct", "Products")</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        
+                                <li>@Html.ActionLink("Contact", "Create", "CustomerReviews")</li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Services <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+
+                                        <li>@Html.ActionLink("Hospitals", "IndexHos1", "UserHospitals")</li>
+                                        <li>@Html.ActionLink("ICU", "IndexIcu1", "UserIcus")</li>
+                                        <li>@Html.ActionLink("VaccinationCenters", "IndexVac1", "VaccinationCenters1")</li>
+                                        <li>@Html.ActionLink("Ambulance", "IndexAmb1", "UserAmbulances")</li>
+                                    </ul>
+                                </li>
+                    }
+
+                </ul>
+
+
+
+
+                                    <ul class="nav navbar-nav" style="float:right !important">
+                                        @if (Session["Username"] != null)
+                                        {
+                                            <li><p style="color:#fff;margin-top:15px;"> Hello @Session["Username"]</p></li>
+                                            
+                                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                                        }
+                                        else if (Session["adminUsername"] != null)
+                                        {
+                                            <li><p style="color:#fff;margin-top:15px;"> Hello Admin </p></li>
+                                           
+                                            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                                        }
+
+                                        else
+                                        {
+                                            <li>@Html.ActionLink("Signup", "Signup", "Home")</li>
+                                            <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                                            <li>@Html.ActionLink("Admin", "adminLogin", "Home")</li>
+                                        }
+
+                                    </ul>
+
+                                    @Html.Partial("_LoginPartial")
+</div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        </div>
+
+
+   
+    <link href="~/content/stylesheet1.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

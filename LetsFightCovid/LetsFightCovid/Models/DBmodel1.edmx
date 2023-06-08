@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LetsFightCovidModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Img">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pid" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="did" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oid" Type="int" />
+          <Property Name="pid" Type="int" />
+          <Property Name="pprice" Type="money" Nullable="false" />
+          <Property Name="pqty" Type="int" Nullable="false" />
+          <Property Name="pamount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="odate" Type="date" Nullable="false" />
+          <Property Name="opname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opphone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="opaddress" Type="text" Nullable="false" />
+          <Property Name="oamount" Type="money" Nullable="false" />
+          <Property Name="ostatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Img__pid__04E4BC85">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Img" Type="Self.Img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="Img">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDetail__oid__09A971A2">
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderProduct">
+              <PropertyRef Name="oid" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="oid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDetail__pid__0A9D95DB">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LetsFightCovidModel1StoreContainer">
+          <EntitySet Name="Img" EntityType="Self.Img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Img__pid__04E4BC85" Association="Self.FK__Img__pid__04E4BC85">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Img" EntitySet="Img" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDetail__oid__09A971A2" Association="Self.FK__OrderDetail__oid__09A971A2">
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDetail__pid__0A9D95DB" Association="Self.FK__OrderDetail__pid__0A9D95DB">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LetsFightCovidModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Img">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pid" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Img__pid__04E4BC85" FromRole="Img" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="did" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oid" Type="Int32" />
+          <Property Name="pid" Type="Int32" />
+          <Property Name="pprice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="pqty" Type="Int32" Nullable="false" />
+          <Property Name="pamount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderDetail__oid__09A971A2" FromRole="OrderDetails" ToRole="OrderProduct" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderDetail__pid__0A9D95DB" FromRole="OrderDetails" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="odate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="opname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opphone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opaddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oamount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ostatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__oid__09A971A2" FromRole="OrderProduct" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Imgs" Relationship="Self.FK__Img__pid__04E4BC85" FromRole="Product" ToRole="Img" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetail__pid__0A9D95DB" FromRole="Product" ToRole="OrderDetails" />
+        </EntityType>
+        <Association Name="FK__Img__pid__04E4BC85">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Img" Type="Self.Img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="Img">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDetail__oid__09A971A2">
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderProduct">
+              <PropertyRef Name="oid" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="oid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDetail__pid__0A9D95DB">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LetsFightCovidEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Imgs" EntityType="Self.Img" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <AssociationSet Name="FK__Img__pid__04E4BC85" Association="Self.FK__Img__pid__04E4BC85">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Img" EntitySet="Imgs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDetail__oid__09A971A2" Association="Self.FK__OrderDetail__oid__09A971A2">
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDetail__pid__0A9D95DB" Association="Self.FK__OrderDetail__pid__0A9D95DB">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LetsFightCovidModel1StoreContainer" CdmEntityContainer="LetsFightCovidEntities1">
+          <EntitySetMapping Name="Imgs">
+            <EntityTypeMapping TypeName="LetsFightCovidModel1.Img">
+              <MappingFragment StoreEntitySet="Img">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="iname" ColumnName="iname" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="LetsFightCovidModel1.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="did" ColumnName="did" />
+                <ScalarProperty Name="oid" ColumnName="oid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="pprice" ColumnName="pprice" />
+                <ScalarProperty Name="pqty" ColumnName="pqty" />
+                <ScalarProperty Name="pamount" ColumnName="pamount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProducts">
+            <EntityTypeMapping TypeName="LetsFightCovidModel1.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="oid" ColumnName="oid" />
+                <ScalarProperty Name="odate" ColumnName="odate" />
+                <ScalarProperty Name="opname" ColumnName="opname" />
+                <ScalarProperty Name="opphone" ColumnName="opphone" />
+                <ScalarProperty Name="opaddress" ColumnName="opaddress" />
+                <ScalarProperty Name="oamount" ColumnName="oamount" />
+                <ScalarProperty Name="ostatus" ColumnName="ostatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="LetsFightCovidModel1.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="pname" ColumnName="pname" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LetsFightCovidModel2StoreContainer" CdmEntityContainer="LetsFightCovidEntities2">
+    <EntitySetMapping Name="CustomerReviews">
+      <EntityTypeMapping TypeName="LetsFightCovidModel2.CustomerReview">
+        <MappingFragment StoreEntitySet="CustomerReview">
+          <ScalarProperty Name="customer_ID" ColumnName="customer_ID" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+          <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+          <ScalarProperty Name="customer_review" ColumnName="customer_review" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
